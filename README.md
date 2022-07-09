@@ -1,9 +1,10 @@
-# lzhw
-## Compression library for data frames and tabular data files, csv, excel etc.
+# Energy efficiency in IoT devices using Data Compression
 
-![lzhw logo](./img/lzhw_logo.jpg)
+## Compression library for dataframes, CSV files and so much more!
 
-[![](https://img.shields.io/badge/docs-latest-blue.svg)](https://mnoorfawi.github.io/lzhw/) 
+![lzhw logo](./img/LZHW.jpg)
+
+[![](https://img.shields.io/badge/docs-latest-blue.svg)](https://mnoorfawi.github.io/lzhw/)
 [![Build Status](https://travis-ci.com/MNoorFawi/lzhw.svg?branch=master)](https://travis-ci.com/MNoorFawi/lzhw)
 [![Downloads](https://static.pepy.tech/personalized-badge/lzhw?period=total&units=international_system&left_color=grey&right_color=yellowgreen&left_text=Downloads)](https://pepy.tech/project/lzhw)
 
@@ -17,7 +18,7 @@ It works on Windows and soon a Mac version will be available.
 
 ## Full documentation can be found [here](https://mnoorfawi.github.io/lzhw/)
 
-**Data Frames compression and decompression can work in parallel**. 
+**Data Frames compression and decompression can work in parallel**.
 
 ## Quick Start
 
@@ -28,8 +29,8 @@ pip install lzhw
 ```python
 import lzhw
 
-sample_data = ["Sunny", "Sunny", "Overcast", "Rain", "Rain", "Rain", "Overcast", 
-               "Sunny", "Sunny", "Rain", "Sunny", "Overcast", "Overcast", "Rain", 
+sample_data = ["Sunny", "Sunny", "Overcast", "Rain", "Rain", "Rain", "Overcast",
+               "Sunny", "Sunny", "Rain", "Sunny", "Overcast", "Overcast", "Rain",
                "Rain", "Rain", "Sunny", "Sunny", "Overcaste"]
 
 compressed = lzhw.LZHW(sample_data)
@@ -84,7 +85,7 @@ print(comp_num.compressed) # how the compressed is saved (as tuple of 3 integers
 # (8198555, 620206, 3059308)
 ```
 
-We can also write the compressed data to files using **save_to_file** method, 
+We can also write the compressed data to files using **save_to_file** method,
 and read it back and decompress it using **decompress_from_file** function.
 
 ```python
@@ -111,6 +112,7 @@ comp_df = lzhw.CompressedDF(df)
 ```
 
 Let's check space saved by compression
+
 ```python
 comp_space = 0
 for i in range(len(comp_df.compressed)):
@@ -126,7 +128,7 @@ print(list(map(int, comp_df.compressed[0].decompress())) == list(df.a))
 
 #### Saving and Loading Compressed DataFrames
 
-With lzhw we can save a data frame into a compressed file and then read it again 
+With lzhw we can save a data frame into a compressed file and then read it again
 using **save_to_file** method and **decompress_df_from_file** function.
 
 ```python
@@ -151,7 +153,7 @@ print(original)
 
 #### Compressing Bigger DataFrames
 
-Let's try to compress a real-world dataframe **german_credit.xlsx** file from [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)) [1].
+Let's try to compress a real-world dataframe **german_credit.xlsx** file from [UCI Machine Learning Repository](<https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)>) [1].
 
 Original txt file is **219 KB** on desk.
 
@@ -180,7 +182,7 @@ Let's now write the compressed dataframe into a file and compare the sizes of th
 
 ```python
 comp_gc.save_to_file("gc_compressed.txt")
-``` 
+```
 
 Checking the size of the compressed file, it is **44 KB**. Meaning that in total we saved around **79%**.
 Future versions will be optimized to save more space.
@@ -209,7 +211,7 @@ With **lzhw** also you can choose what columns you are interested in compressing
 **You can also determine **sliding_window** argument to control more compression speed or compressing to a smaller size.**
 Default value is 256, meaning that the algorithm will search in previous 256 values for similar sequences. Increasing this number can give smaller compressed size but can slow down a little bit the algorithm but not so much as **lz77_compress is able to scale up reasonably.**
 
-Also one can compress large csv files in chunks while reading them in chunks without opening the whole file in memory using **CompressedFromCSV** class which reads a file in chunks using *pandas chunksize* and compress each chunk separately.
+Also one can compress large csv files in chunks while reading them in chunks without opening the whole file in memory using **CompressedFromCSV** class which reads a file in chunks using _pandas chunksize_ and compress each chunk separately.
 
 **Please see [documentation](https://mnoorfawi.github.io/lzhw/) for deeper look**
 
@@ -227,9 +229,10 @@ I will use [1500000 Sales Records Data](http://eforexcel.com/wp/wp-content/uploa
 
 **We will look at Compression and Decompression Duration and The compressed file sizes.**
 
-*The downloaded compressed file is 53MB on the websites*
+_The downloaded compressed file is 53MB on the websites_
 
 I will reproduce the code in joblib documentation
+
 ```python
 data = pd.read_csv("1500000 Sales Records.csv")
 print(data.shape)
@@ -309,7 +312,7 @@ lzhw_file_size = os.stat("lzhw_data.txt").st_size / 1e6
 print("LZHW file size: %0.3fMB" % lzhw_file_size)
 
 start = time.time()
-lzhw_d = lzhw.decompress_df_from_file("lzhw_data.txt", parallel = True, n_jobs = -3)  
+lzhw_d = lzhw.decompress_df_from_file("lzhw_data.txt", parallel = True, n_jobs = -3)
 # decompression is slower than compression
 lzhw_d_duration = time.time() - start
 print("LZHW decompression duration: %0.3fs" % lzhw_d_duration)
@@ -373,12 +376,14 @@ for index, value in enumerate(file_sizes):
 **By far LZHW outperforms others with acceptable time difference**, especially with all other functionalities it enables to deal with compressed data.
 
 #### DEFLATE Note
+
 The techniques may seem similar to the [**DEFLATE**](https://en.wikipedia.org/wiki/DEFLATE) algorithm which uses both LZSS, which is a variant of LZ77, and huffman coding, but I am not sure how the huffman coding further compresses the triplets. I believe it compresses the triplets altogether not as 3 separate lists as lzhw.
- And also it doesn't use the lempel-ziv-welch for further compression.
+And also it doesn't use the lempel-ziv-welch for further compression.
 
 LZHW also uses a **modified version of LZ77**, in which it uses a dictionary, **key-value data structure, to store the already-seen patterns with their locations during the compression process, so that the algorithm instead of blindly going back looking for matching, it knows where exactly to go**. This **speeds up the compression process**.
 
-For example, let's say the algorithm now has found "A", it needs to see in previous sequences where is the longest match. It will do so using the dictionary {"A": [1, 4, 5, 8]}. So it will go and start looking starting from these locations instead of blindly looking for "A"'s indices. 
+For example, let's say the algorithm now has found "A", it needs to see in previous sequences where is the longest match. It will do so using the dictionary {"A": [1, 4, 5, 8]}. So it will go and start looking starting from these locations instead of blindly looking for "A"'s indices.
 
 ##### Reference
- 		[1] Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
+
+[1] Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
