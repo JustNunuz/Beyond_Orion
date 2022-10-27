@@ -1,6 +1,6 @@
 # Beyond Orion 
 
-![LZHW](https://user-images.githubusercontent.com/59164172/197482289-507f7e94-3c5e-44c0-aea5-f5105348d024.gif)
+![LZHW(1)](https://user-images.githubusercontent.com/59164172/198283332-2c466fba-a603-4693-b804-888bde68a896.gif)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) ![maintained -yes](https://user-images.githubusercontent.com/59164172/195039473-7f725d9c-01fb-4b5e-90e3-367c3000f9e3.svg)
 
@@ -8,12 +8,15 @@
 ### Traditional IoT compression schemes fail to:
 
 1. Minimise energy consumption within IoT nodes
-1. Provide high scalability
-1. Ensure fault tolerance (resilence to errors)
-1. Robustness
-1. High complexity
+2. Provide high scalability
+3. Ensure fault tolerance (resilence to errors)
+4. Robustness
+5. High complexity
 
 **Data Frames compression and decompression can work in parallel**.
+
+**Compatibile with Excel workbooks, textfiles, comma seperated values, data frames , arrays and lists.**
+
 
 ## Quick Start
 
