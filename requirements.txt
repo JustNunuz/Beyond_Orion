@@ -1,5 +1,11 @@
 pandas
-tqdm
-numpy>=1.16.5
-joblib
-cython
+numpy
+lzhw
+os
+sys
+time
+random
+tracemalloc
+psutil
+jolib
+pickle
