@@ -1,27 +1,24 @@
-# Energy efficiency in IoT devices using Data Compression
+# Beyond Orion 
 
-## Compression library for dataframes, CSV files and so much more!
-
-![lzhw logo](./img/LZHW.jpg)
+![LZHW](https://user-images.githubusercontent.com/59164172/197482289-507f7e94-3c5e-44c0-aea5-f5105348d024.gif)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) ![maintained -yes](https://user-images.githubusercontent.com/59164172/195039473-7f725d9c-01fb-4b5e-90e3-367c3000f9e3.svg)
 
-**Compression** library to compress big lists and/or pandas dataframes using an **optimized algorithm (lzhw)** developed from Lempel-Ziv, Huffman and LZ-Welch techniques.
+## About the project
+### Traditional IoT compression schemes fail to:
 
-**lzhw** has a command line tool that can be downloaded from [here](https://github.com/MNoorFawi/lzhw/releases/download/v0.0.10/lzhw.exe) and can work from command line with no prior python installation.
-
-**Manual on how to use it available [here](https://mnoorfawi.github.io/lzhw/5%20Using%20the%20lzhw%20command%20line%20tool/)**.
-
-It works on Windows and soon a Mac version will be available.
-
-## Full documentation can be found [here](https://mnoorfawi.github.io/lzhw/)
+1. Minimise energy consumption within IoT nodes
+1. Provide high scalability
+1. Ensure fault tolerance (resilence to errors)
+1. Robustness
+1. High complexity
 
 **Data Frames compression and decompression can work in parallel**.
 
 ## Quick Start
 
 ```bash
-pip install lzhw
+pip install requirements.txt
 ```
 
 ```python
@@ -382,6 +379,14 @@ LZHW also uses a **modified version of LZ77**, in which it uses a dictionary, **
 
 For example, let's say the algorithm now has found "A", it needs to see in previous sequences where is the longest match. It will do so using the dictionary {"A": [1, 4, 5, 8]}. So it will go and start looking starting from these locations instead of blindly looking for "A"'s indices.
 
-##### Reference
+#Contributing
 
-[1] Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
+
+# References
+
+[1] P. Kumar Singh, B. K Bhargava, M. Paprzycki, N. Chand Kaushal and W. Hong, "Handbook of Wireless Sensor Networks:  Issues and Challenges in Current Scenario's", Advances in Intelligent Systems and Computing, vol. 1132, 2020.  Available: https://www.springer.com/gp/book/9783030403041. [Accessed 22 October 2021]. 
+[2] B. Gaur Sanjay, M. Purohit and O. Vyas, "Recent Advances in Wireless Sensor Network for Secure and Energy Efficient  Routing Protocol", Advances in Intelligent Systems and Computing, pp. 260-274, 2020. Available: 10.1007/978- 3-030-40305-8_13 [Accessed 25 October 2021]. 
+[3]S. Shah, D. Seker, S. Hameed and D. Draheim, "The Rising Role of Big Data Analytics and IoT in Disaster Management: Recent Advances, Taxonomy and Prospects", IEEE Access, vol. 7, pp. 54595-54614, 2019. Available: 10.1109/access.2019.2913340 [Accessed 19 September 2022].
+[4]A. Fang, W. Lim and T. Balakrishnan, "Early warning score validation methodologies and performance metrics: a systematic review", BMC Medical Informatics and Decision Making, vol. 20, no. 1, 2020. Available: 10.1186/s12911-020-01144-8 [Accessed 19 September 2022].
+[5]B. Farahani, F. Firouzi, V. Chang, M. Badaroglu, N. Constant and K. Mankodiya, "Towards fog-driven IoT eHealth: Promises and challenges of IoT in medicine and healthcare", Future Generation Computer Systems, vol. 78, pp. 659-676, 2018. Available: 10.1016/j.future.2017.04.036 [Accessed 19 September 2022].
+[6]S. Selvaraj and S. Sundaravaradhan, "Challenges and opportunities in IoT healthcare systems: a systematic review", SN Applied Sciences, vol. 2, no. 1, 2019. Available: 10.1007/s42452-019-1925-y [Accessed 19 September 2022].
